@@ -1,9 +1,9 @@
 JenkinsFetchArtifacts
 =====================
 
-This powershell script aims to fix the issue with jenkins pipeline plugin, where manually triggered job in pipeline doesn't download the artifacts from the correct upstream build number. It is suitable for environments where it is not easy to install other jenkins plugins or to use technologies other than Microsoft technologies.
+This powershell script aims to fix the issue with jenkins pipeline plugin, where manually triggered job in pipeline doesn't download the artifacts from the correct upstream build number.
 
-It is supposed to be used in conjuction with Jenkins Pipeline plugin.
+It is supposed to be used with Jenkins Pipeline plugin.
 
 Usage:
 
