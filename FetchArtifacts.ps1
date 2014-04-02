@@ -15,16 +15,16 @@ Function Get-UpstreamBuildNo{
 			[string]$CurrentBuildNo = (Get-Item env:BUILD_NUMBER).Value
 	);
 
-	if($CurrentJobName -eq $upstreamJobName) {
+	if($CurrentJobName -eq $JobToDownloadArtifactsFrom) {
 		return $currentBuildNo;
 	}
 
 	if(!$CurrentJobName -or !$CurrentBuildNo) {
-		Write-Host -Foregroundcolor Red "Cannot find a build for $UpstreamJobName associated with $CurrentJobName#$CurrentBuildNo. Falling back to last successful build of $UpstreamJobName.";
+		Write-Host -Foregroundcolor Red "Cannot find a build for $JobToDownloadArtifactsFrom associated with $CurrentJobName#$CurrentBuildNo. Falling back to last successful build of $JobToDownloadArtifactsFrom.";
 		return "lastSuccessfulBuild";
 	}
 	
-	Write-Host "Trying to find a $UpstreamJobName build which triggered $CurrentJobName#$CurrentBuildNo"
+	Write-Host "Trying to find a $JobToDownloadArtifactsFrom build which triggered $CurrentJobName#$CurrentBuildNo"
 
 	$webClient = New-Object Net.WebClient;
 	$buildDetails = $webClient.DownloadString("$JenkinsServerUrl/job/$CurrentJobName/$CurrentBuildNo/api/json");
