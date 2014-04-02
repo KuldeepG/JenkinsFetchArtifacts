@@ -24,7 +24,7 @@ Function Get-UpstreamBuildNo{
 		return "lastSuccessfulBuild";
 	}
 	
-	Write-Host "Trying to find a $JobToDownloadArtifactsFrom build which triggered $CurrentJobName#$CurrentBuildNo"
+	Write-Host "Trying to find a $JobToDownloadArtifactsFrom build which triggered $CurrentJobName#$CurrentBuildNo";
 
 	$webClient = New-Object Net.WebClient;
 	$buildDetails = $webClient.DownloadString("$JenkinsServerUrl/job/$CurrentJobName/$CurrentBuildNo/api/json");
@@ -62,9 +62,9 @@ $upstreamBuildNo = Get-UpstreamBuildNo;
 try {
 	Get-Artifacts -BuildNo $upstreamBuildNo;
 	Extract-Artifacts;
-	Write-Host "Successfuly downloaded artifacts from $JobToDownloadArtifactsFrom"
+	Write-Host "Successfuly downloaded artifacts from $JobToDownloadArtifactsFrom";
 } catch [Exception] {
 	Write-Host -Foregroundcolor Red $_.Exception.Message;
-	Write-Host -Foregroundcolor Red "Terminating because of the exception above."
+	Write-Host -Foregroundcolor Red "Terminating because of the exception above.";
 	exit 1;
 }
