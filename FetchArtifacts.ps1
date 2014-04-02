@@ -38,7 +38,7 @@ Function Get-UpstreamBuildNo{
 Function Get-Artifacts {
 	param(
 	[Parameter(Mandatory=$True, Position=1)]
-		[string]$BuildNo,
+		[string]$BuildNo
 	);
 
 	$webClient = New-Object Net.WebClient;
